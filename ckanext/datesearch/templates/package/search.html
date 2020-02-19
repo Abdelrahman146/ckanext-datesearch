@@ -1,0 +1,28 @@
+{% ckan_extends %}
+
+{% block secondary_content %}
+{{ super() }}
+  {% resource 'ckanext-datesearch/moment.js' %}
+  {% resource 'ckanext-datesearch/datepicker.css' %}
+  {% resource 'ckanext-datesearch/daterangepicker.css' %}
+  {% resource 'ckanext-datesearch/bootstrap-datepicker.js' %}
+  {% resource 'ckanext-datesearch/daterangepicker-module.js' %}
+
+  {# This <section> is the date-range picker widget in the sidebar. #}
+  <section  class=" module module-narrow module-shallow">
+    <h2 class="module-heading">
+      <em class="fa fa-calendar"></em>  {{ _('Año de publicación') }}
+      <a href="{{ h.remove_url_param(['ext_startdate', 'ext_enddate']) }}" class="action clear_action">{{ _('Clear') }}</a>
+    </h2>
+    <div class="module-content input-prepend input-daterange" data-module="daterange-query" id="datepicker">
+      <div class="form-group">
+      <label for="start" class="">Desde</label>
+      <input type="text" class="input-mini form-control" style="cursor:pointer;" readonly="" name="start" id="start" data-module="daterangepicker-module" />
+      </div>
+      <div class="form-group">
+      <label for="end" class="">Hasta</label>
+      <input type="text" class="input-mini form-control" style="cursor:pointer;" readonly="" name="end" id="end" data-module="daterangepicker-module" />
+      </div>   
+   </div>
+  </section>
+{% endblock %}
