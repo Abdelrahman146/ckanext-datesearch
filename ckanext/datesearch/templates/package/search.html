@@ -25,4 +25,19 @@
       </div>   
    </div>
   </section>
+  <section  class=" module module-narrow module-shallow">
+    <h2 class="module-heading">
+      <em class="fa fa-calendar"></em>  {{ _('Frecuencia de actualización') }}
+      <a href="{{ h.remove_url_param(['ext_startdate', 'ext_enddate']) }}" class="action clear_action">{{ _('Clear') }}</a>
+    </h2>
+    <nav>
+      <ul class="list-unstyled nav nav-simple nav-facet">
+      <li class="nav-item"><a href="/dataset?q=frequency:P1Y">Anual</a></li>
+      <li class="nav-item"><a href="/dataset?q=frequency:P1M">Mensual</a></li>
+      <li class="nav-item"><a href="/dataset?q=frequency:P7D">Semanal</a></li>
+      <li class="nav-item"><a href="/dataset?q=frequency:P1D">Diaria</a></li>
+      <li class="nav-item"><a href="/dataset?q=frequency:T1H">Horaria</a></li>
+      </ul>
+   </nav>
+  </section>
 {% endblock %}
