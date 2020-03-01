@@ -11,14 +11,13 @@ this.ckan.module('daterangepicker-module', function ($, _) {
             // Pick out relevant parameters
             param_start = $.urlParam('ext_startdate');
             param_end = $.urlParam('ext_enddate');
-
             // Populate the datepicker and hidden fields
-            if (param_start) {
-                $('#datepicker #start').val(moment.utc(param_start).year());
+            if (param_start){
+                $('#datepicker #start').val(moment.utc(param_start).format("MMMM Do YYYY"));
                 $('#ext_startdate').val(param_start);
             }
             if (param_end) {
-                $('#datepicker #end').val(moment.utc(param_end).year());
+                $('#datepicker #end').val(moment.utc(param_end).format("MMMM Do YYYY"));
                 $('#ext_enddate').val(param_end);
             }
 
@@ -36,13 +35,7 @@ this.ckan.module('daterangepicker-module', function ($, _) {
             }
 
             // Add a date-range picker widget to the <input> with id #daterange
-            $('#datepicker.input-daterange').datepicker({
-                format: "yyyy",
-                startView: 3,
-                minViewMode: 2,
-                keyboardNavigation: false,
-                autoclose: true
-            }).on('changeDate', function (ev) {
+            $('#datepicker.input-daterange').datepicker({ endDate: new Date() }).on('changeDate', function (ev) {
                     // Bootstrap-daterangepicker calls this function after the user picks a start and end date.
 
                     // Format the start and end dates into strings in a date format that Solr understands.
